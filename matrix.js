@@ -105,6 +105,15 @@ const getMatrixData2D = function (matrixId) {
 // The functions must check the posibility of calculation too.
 function addMatrices(matrix1, matrix2){ 
 	// provide the code
+    let resmat = []
+    for (let i = 0; i < matrix1.length; i++){
+        let r = "";
+        for (let j = 0; j < matrix1[i].length; j++){
+            r += matrix1[i][j] + matrix2[i][j] + " ";
+        }
+        resmat.push(r.trim());
+    }
+    resmat.forEach(r => console.log(r));
 }
 const subtractMatrices = function (matrix1, matrix2) { 
 	// provide the code
