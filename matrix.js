@@ -26,7 +26,7 @@ const createMatrix = (title, containerId, rows, cols) => {
 
 const showResult = (title, containerId, rows, cols, dataArray) => {
     let container = document.getElementById(containerId);
-    container.innerHTML = ''; // Clear previous content
+    container.innerHTML = ''; 
     let table = document.createElement('table');
 
     for (let i = 0; i < rows; i++) {
@@ -34,7 +34,6 @@ const showResult = (title, containerId, rows, cols, dataArray) => {
         for (let j = 0; j < cols; j++) {
             let td = document.createElement('td');
             let span = document.createElement('span');
-            // Calculate the index in the dataArray based on current row and column
             let index = i * cols + j;
             if (index < dataArray.length) {
                 span.innerHTML = dataArray[index];
@@ -72,8 +71,6 @@ const showResult2D = (title, containerId, dataArray) => {
     container.appendChild(table);
 };
 
-
-
 function performOperation(operation) {
     let matrix1 = getMatrixData2D('matrix1');
     let matrix2 = getMatrixData2D('matrix2');
@@ -82,7 +79,9 @@ function performOperation(operation) {
     console.log("Operation", operation);
 
     // Call your matrix calculation functions here
-    if (operation === 'add') { addMatrices(matrix1, matrix2); }
+    if (operation == 'add') { addMatrices(matrix1, matrix2); }
+    if (operation == 'subtract'){ subtractMatrices(matrix1, matrix2); }
+    if (operation == 'multiply'){ multiplyMatricesMatrices(matrix1, matrix2); }
 	// prints suitable messages for impossible situation
     showResult('The Result', 'matrix3', 2, 4, result); // use suitable function for printing results
 }
@@ -118,12 +117,9 @@ const getMatrixData2D = function (matrixId) {
     return matrixData;
 };
 
-
-// Add your matrix calculation functions here
-// The functions must check the posibility of calculation too.
 function addMatrices(matrix1, matrix2) {
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
-        console.log("Matrices must have the same dimensions for addition.");
+        console.log("Matrix1 and Matrix2 must have equal dimensions.");
         return;
     }
 
@@ -144,7 +140,7 @@ function addMatrices(matrix1, matrix2) {
 
 const subtractMatrices = function (matrix1, matrix2) {
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
-        console.log("Matrices must have the same dimensions for subtraction.");
+        console.log("Matrix1 and Matrix2 must have equal dimensions.");
         return;
     }
 
@@ -164,7 +160,7 @@ const subtractMatrices = function (matrix1, matrix2) {
 
 const multiplyMatrices = (matrix1, matrix2) => {
     if (matrix1[0].length !== matrix2.length) {
-        console.log("Number of columns in the first matrix must be equal to the number of rows in the second matrix for multiplication.");
+        console.log("Matrix 1 Columns must equal matrix 2 rows.");
         return;
     }
 
