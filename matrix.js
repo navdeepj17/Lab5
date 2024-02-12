@@ -51,9 +51,27 @@ const showResult = (title, containerId, rows, cols, dataArray) => {
 };
 
 const showResult2D = (title, containerId, dataArray) => {
-	// dataArray is a 2D array
-	// complete this function based on the showResult function
-}
+    let container = document.getElementById(containerId);
+    container.innerHTML = ''; // Clear previous content
+    let table = document.createElement('table');
+
+    for (let i = 0; i < dataArray.length; i++) {
+        let tr = document.createElement('tr');
+        for (let j = 0; j < dataArray[0].length; j++) {
+            let td = document.createElement('td');
+            let span = document.createElement('span');
+            span.innerHTML = dataArray[i][j];
+            td.appendChild(span);
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    let caption = table.createCaption();
+    caption.textContent = title;
+    container.appendChild(table);
+};
+
 
 function performOperation(operation) {
     let matrix1 = getMatrixData2D('matrix1');
