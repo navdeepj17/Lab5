@@ -2,7 +2,7 @@
 
 ## Team Members
 
-| Name            |UCID           |
-|-----------------|---------------|
-| Farhan Abbas    |30187842       |
-| Navdeep Jaswal  |30174209       |
+| Name            |
+|-----------------|
+| Farhan Abbas    |
+| Navdeep Jaswal  |
