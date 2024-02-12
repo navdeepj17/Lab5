@@ -61,10 +61,9 @@ function performOperation(operation) {
     console.log("1st Matrix",matrix1);
     console.log("2nd Matrix", matrix2);
     console.log("Operation", operation);
-    // Just a test result
-    let result = [1, 2, 3, 4, 5, 6, 7, 8];
+
     // Call your matrix calculation functions here
-    // For example: if (operation === 'add') { addMatrices(matrix1, matrix2); }
+    if (operation === 'add') { addMatrices(matrix1, matrix2); }
 	// prints suitable messages for impossible situation
     showResult('The Result', 'matrix3', 2, 4, result); // use suitable function for printing results
 }
@@ -103,21 +102,61 @@ const getMatrixData2D = function (matrixId) {
 
 // Add your matrix calculation functions here
 // The functions must check the posibility of calculation too.
-function addMatrices(matrix1, matrix2){ 
-	// provide the code
-    let resmat = []
-    for (let i = 0; i < matrix1.length; i++){
-        let r = "";
-        for (let j = 0; j < matrix1[i].length; j++){
-            r += matrix1[i][j] + matrix2[i][j] + " ";
-        }
-        resmat.push(r.trim());
+function addMatrices(matrix1, matrix2) {
+    if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+        console.log("Matrices must have the same dimensions for addition.");
+        return;
     }
-    resmat.forEach(r => console.log(r));
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        let row = [];
+        for (let j = 0; j < matrix1[0].length; j++) {
+            row.push(matrix1[i][j] + matrix2[i][j]);
+        }
+        result.push(row);
+    }
+
+    showResult2D('The Result', 'matrix3', result);
 }
-const subtractMatrices = function (matrix1, matrix2) { 
-	// provide the code
+
+const subtractMatrices = function (matrix1, matrix2) {
+    if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
+        console.log("Matrices must have the same dimensions for subtraction.");
+        return;
+    }
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        let row = [];
+        for (let j = 0; j < matrix1[0].length; j++) {
+            row.push(matrix1[i][j] - matrix2[i][j]);
+        }
+        result.push(row);
+    }
+
+    showResult2D('The Result', 'matrix3', result);
 };
-const multiplyMatrices = (matrix1, matrix2) => { 
-	// provide the code
+
+const multiplyMatrices = (matrix1, matrix2) => {
+    if (matrix1[0].length !== matrix2.length) {
+        console.log("Number of columns in the first matrix must be equal to the number of rows in the second matrix for multiplication.");
+        return;
+    }
+
+    let result = [];
+    for (let i = 0; i < matrix1.length; i++) {
+        let row = [];
+        for (let j = 0; j < matrix2[0].length; j++) {
+            let sum = 0;
+            for (let k = 0; k < matrix1[0].length; k++) {
+                sum += matrix1[i][k] * matrix2[k][j];
+            }
+            row.push(sum);
+        }
+        result.push(row);
+    }
+
+    showResult2D('The Result', 'matrix3', result);
 };
+
