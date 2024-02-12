@@ -57,7 +57,7 @@ const showResult2D = (title, containerId, dataArray) => {
 
     for (let i = 0; i < dataArray.length; i++) {
         let tr = document.createElement('tr');
-        for (let j = 0; j < dataArray[0].length; j++) {
+        for (let j = 0; j < dataArray[i].length; j++) {
             let td = document.createElement('td');
             let span = document.createElement('span');
             span.innerHTML = dataArray[i][j];
@@ -71,6 +71,7 @@ const showResult2D = (title, containerId, dataArray) => {
     caption.textContent = title;
     container.appendChild(table);
 };
+
 
 
 function performOperation(operation) {
@@ -136,7 +137,10 @@ function addMatrices(matrix1, matrix2) {
     }
 
     showResult2D('The Result', 'matrix3', result);
+
+    return result;
 }
+
 
 const subtractMatrices = function (matrix1, matrix2) {
     if (matrix1.length !== matrix2.length || matrix1[0].length !== matrix2[0].length) {
@@ -154,6 +158,8 @@ const subtractMatrices = function (matrix1, matrix2) {
     }
 
     showResult2D('The Result', 'matrix3', result);
+
+    return result;
 };
 
 const multiplyMatrices = (matrix1, matrix2) => {
@@ -176,5 +182,7 @@ const multiplyMatrices = (matrix1, matrix2) => {
     }
 
     showResult2D('The Result', 'matrix3', result);
+
+    return result;
 };
 
