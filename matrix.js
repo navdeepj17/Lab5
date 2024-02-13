@@ -78,12 +78,9 @@ function performOperation(operation) {
     console.log("2nd Matrix", matrix2);
     console.log("Operation", operation);
 
-    // Call your matrix calculation functions here
     if (operation == 'add') { addMatrices(matrix1, matrix2); }
     if (operation == 'subtract'){ subtractMatrices(matrix1, matrix2); }
-    if (operation == 'multiply'){ multiplyMatricesMatrices(matrix1, matrix2); }
-	// prints suitable messages for impossible situation
-    showResult('The Result', 'matrix3', 2, 4, result); // use suitable function for printing results
+    if (operation == 'multiply'){ multiplyMatrices(matrix1, matrix2); }
 }
 
 const getMatrixData1D = function (matrixId) {
